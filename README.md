@@ -1,5 +1,7 @@
 Municipal-Revenue-and-Expenditures
 
+[![Build Status](https://travis-ci.org/CT-Data-Collaborative/municipal-debt.svg?branch=master)](https://travis-ci.org/CT-Data-Collaborative/municipal-revenue-and-expenditures)
+
 Municipal Revenue and Expenditures reports indicators of Municipal revenue, taxes, and expenditures.
 
 ## License MIT
