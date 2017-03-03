@@ -14,11 +14,11 @@
     "name": "ctopm",
     "web": ""
   }],
-  "author":[ {
+  "author":{
     "name": "Jenna Daly",
     "email": "jdaly@ctdata.org",
     "web": "http://ctdata.org"
-  }],
+  },
   "contributor": [],
   "resources": [{
     "path": "data/municipal_revenue_and_expenditures_data.csv",
@@ -39,10 +39,10 @@
       }, {
         "name": "Measure Type",
         "type": "string",
-        "dimension": true, 
+        "dimension": true,
         "constraints": {
 		      "enum": [
-		        "Number", 
+		        "Number",
 		        "Percent"
 		      ]
 		    }
@@ -70,7 +70,7 @@
             "Ratio of Intergovernmental Revenue to Total Revenue",
             "Ratio of Total Revenue to Total Expenditures"
           ]
-			  }        
+			  }
       }, {
         "name": "Value",
         "type": "number",
@@ -99,7 +99,7 @@
         "ckan_name": "Numerator",
         "value": "For Current Year Adjusted Tax Levy per Capita, the numerator is the Current Year Adjusted Taxes Collectible for the selected municipality and year. For Property Tax Revenue as Percent of Total Revenue, the numerator is the Property Tax Revenue for the selected municipality and year. For the Ratio of Intergovernmental Revenue to Total Revenue, the numerator is the Intervovernmental Revenue for the selected municipality and year. For the Ratio of Total Revenue to Total Expenditures and Other Sources, the numerator is the Total Revenue for the selected municipality and year. For the Current Year Adjusted Tax Levy per Capita as Percent of State Average, the numerator is the Current Year Adjusted Tax Levy per Capita for the selected municipality and year.",
         "type": "string"
-      },   
+      },
       "denominator": {
         "ckan_name": "Denominator",
         "value": "For Current Year Adjusted Tax Levy per Capita, the denominator is the total Population for the selected municipality as of July 1 of the end year of the selected State Fiscal Year (eg July 1, 2013 for SFY 2012-2013). For Property Tax Revenue as Percent of Total Revenue and Ratio of Intergovernmental Revenue to Total Revenue, the denominator is the Total Revenue for the selected municipality and year. For the Ratio of Total Revenue to Total Expenditures and Other Sources, the denominator is the sum of Total Expenditures and Total Transfers from Other Sources for the selected municipality and year. For the Current Year Adjusted Tax Levy per Capita as Percent of State Average, the denominator is the quotient of a sum of Current Year Adjusted Taxes Collectible for all municipalities divided by a sum of their respective Total Populations for the selected fiscal year.",
@@ -130,9 +130,9 @@
       },
       "years_in_catalog": {
         "ckan_name": "Years in Catalog",
-        "value": ["SFY 2000-2001", "SFY 2001-2002", "SFY 2002-2003", "SFY 2003-2004", 
-                  "SFY 2004-2005", "SFY 2005-2006", "SFY 2006-2007", "SFY 2007-2008", 
-                  "SFY 2008-2009", "SFY 2009-2010", "SFY 2010-2011", "SFY 2011-2012", 
+        "value": ["SFY 2000-2001", "SFY 2001-2002", "SFY 2002-2003", "SFY 2003-2004",
+                  "SFY 2004-2005", "SFY 2005-2006", "SFY 2006-2007", "SFY 2007-2008",
+                  "SFY 2008-2009", "SFY 2009-2010", "SFY 2010-2011", "SFY 2011-2012",
                   "SFY 2012-2013", "SFY 2013-2014", "SFY 2014-2015"],
         "type": "array"
       },
@@ -170,7 +170,7 @@
 		  		"Variable": "Current Year Adjusted Taxes Collectible"
         },
 		  	"type": "object"
-      }, 
+      },
       "socrata": {
         "ckan_name": "Socrata",
         "value": "True",
@@ -180,8 +180,8 @@
   "spot_checks": [
       {
         "type": "$lookup",
-        "filter": {  
-          "Town": "Andover", 
+        "filter": {
+          "Town": "Andover",
           "Year": "SFY 2000-2001",
           "Variable": "Ratio of Total Revenue to Total Expenditures",
           "Measure Type":"Percent"
@@ -191,11 +191,11 @@
           "number type": "float",
           "value": 102.1
         }
-      }, 
+      },
       {
         "type": "$lookup",
-        "filter": {  
-          "Town": "Ansonia", 
+        "filter": {
+          "Town": "Ansonia",
           "Year": "SFY 2002-2003",
           "Variable": "Total Revenue including Other Sources",
           "Measure Type":"Number"
@@ -205,11 +205,11 @@
           "number type": "int",
           "value": 42688960
         }
-      }, 
+      },
       {
         "type": "$lookup",
-        "filter": {  
-          "Town": "Ashford", 
+        "filter": {
+          "Town": "Ashford",
           "Year": "SFY 2004-2005",
           "Variable": "Other Revenue",
           "Measure Type":"Number"
@@ -222,8 +222,8 @@
       },
       {
         "type": "$lookup",
-        "filter": {  
-          "Town": "Avon", 
+        "filter": {
+          "Town": "Avon",
           "Year": "SFY 2006-2007",
           "Variable": "Current Year Adjusted Tax Levy per Capita",
           "Measure Type":"Number"
@@ -236,8 +236,8 @@
       },
       {
         "type": "$lookup",
-        "filter": {  
-          "Town": "Barkhamsted", 
+        "filter": {
+          "Town": "Barkhamsted",
           "Year": "SFY 2008-2009",
           "Variable": "Property Tax Revenue as Percent of Total Revenue and Transfers into General Fund",
           "Measure Type":"Percent"
@@ -250,8 +250,8 @@
       },
       {
         "type": "$lookup",
-        "filter": {  
-          "Town": "Beacon Falls", 
+        "filter": {
+          "Town": "Beacon Falls",
           "Year": "SFY 2010-2011",
           "Variable": "Ratio of Intergovernmental Revenue to Total Revenue",
           "Measure Type":"Percent"
@@ -264,8 +264,8 @@
       },
       {
         "type": "$lookup",
-        "filter": {  
-          "Town": "Berlin", 
+        "filter": {
+          "Town": "Berlin",
           "Year": "SFY 2012-2013",
           "Variable": "Current Year Adjusted Tax Levy per Capita as Percent of State Average",
           "Measure Type":"Percent"
@@ -278,8 +278,8 @@
       },
       {
         "type": "$lookup",
-        "filter": {  
-          "Town": "Bethany", 
+        "filter": {
+          "Town": "Bethany",
           "Year": "SFY 2014-2015",
           "Variable": "Non-Educational Expenditures",
           "Measure Type":"Number"
@@ -310,7 +310,7 @@
         "Current Year Adjusted Tax Levy per Capita as Percent of State Average",
         "Property Tax Revenue as Percent of Total Revenue and Transfers into General Fund",
         "Ratio of Intergovernmental Revenue to Total Revenue",
-        "Ratio of Total Revenue to Total Expenditures"   
+        "Ratio of Total Revenue to Total Expenditures"
       ]
     }
   ]
