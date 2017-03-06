@@ -44,9 +44,9 @@ for (i in 1:length(only_FISCIN)) {
   SFY2 <- paste("SFY", SFY)
   current_file$Year <- SFY2
   col_names <- colnames(current_file)
- 
+  
   pop_col <- grep("population", col_names, ignore.case=T, value=T)
-
+  
   final_columns <- current_file[, c("Municipality",
                                     "Year",
                                     "Education",
@@ -88,16 +88,16 @@ all_data$"Town" <- gsub("\\b([a-z])([a-z]+)", "\\U\\1\\E\\2", tolower(all_data$T
 ## Round numeric columns to whole numbers
 round_df <- function(x, digits) {
   columns_to_round <- c("Educational Expenditures",
-                       "Intergovernmental Revenue",
-                       "Total Revenue",
-                       "Total Transfers from General Fund",
-                       "Total Transfers into General Fund",
-                       "Other Financing Sources",
-                       "Net Change in Operating Funds",
-                       "Property Tax Revenue",
-                       "Total Expenditures",
-                       "Current Year Adjusted Taxes Collectible",
-                       "Population")
+                        "Intergovernmental Revenue",
+                        "Total Revenue",
+                        "Total Transfers from General Fund",
+                        "Total Transfers into General Fund",
+                        "Other Financing Sources",
+                        "Net Change in Operating Funds",
+                        "Property Tax Revenue",
+                        "Total Expenditures",
+                        "Current Year Adjusted Taxes Collectible",
+                        "Population")
   columns_to_round <- sapply(x, mode) == 'numeric'
   all_data[columns_to_round] <-  round(all_data[columns_to_round], digits)
   all_data
@@ -185,22 +185,22 @@ colnames(arranged) <- c( "Town", "Year",
 
 #convert to long format
 cols_to_stack <- c("Current Year Adjusted Taxes Collectible",
-                  "Current Year Adjusted Tax Levy per Capita",
-                  "Educational Expenditures",
-                  "Intergovernmental Revenue",
-                  "Net Change in Operating Funds",
-                  "Non-Educational Expenditures",
-                  "Other Revenue",
-                  "Property Tax Revenue",
-                  "Total Expenditures",
-                  "Total Revenue",
-                  "Total Revenue including Other Sources",
-                  "Total Transfers from General Fund",
-                  "Total Transfers into General Fund",
-                  "Current Year Adjusted Tax Levy per Capita as Percent of State Average",
-                  "Property Tax Revenue as Percent of Total Revenue and Transfers into General Fund",
-                  "Ratio of Intergovernmental Revenue to Total Revenue",
-                  "Ratio of Total Revenue to Total Expenditures")
+                   "Current Year Adjusted Tax Levy per Capita",
+                   "Educational Expenditures",
+                   "Intergovernmental Revenue",
+                   "Net Change in Operating Funds",
+                   "Non-Educational Expenditures",
+                   "Other Revenue",
+                   "Property Tax Revenue",
+                   "Total Expenditures",
+                   "Total Revenue",
+                   "Total Revenue including Other Sources",
+                   "Total Transfers from General Fund",
+                   "Total Transfers into General Fund",
+                   "Current Year Adjusted Tax Levy per Capita as Percent of State Average",
+                   "Property Tax Revenue as Percent of Total Revenue and Transfers into General Fund",
+                   "Ratio of Intergovernmental Revenue to Total Revenue",
+                   "Ratio of Total Revenue to Total Expenditures")
 
 long_row_count = nrow(arranged) * length(cols_to_stack)
 
