@@ -165,9 +165,9 @@
         "ckan_name": "Default",
 		  	"value": {
 		  		"Measure Type": "Number",
-		  		"Town": "Andover",
-		  		"Year": ["SFY 2000-2001"],
-		  		"Variable": "Current Year Adjusted Taxes Collectible"
+		  		"Town": "Hartford",
+		  		"Year": ["SFY 2014-2015"],
+		  		"Variable": "Total Revenue"
         },
 		  	"type": "object"
       },
