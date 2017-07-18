@@ -1,7 +1,7 @@
 {
   "name": "municipal-revenue-and-expenditures",
   "datapackage_version": "1.0-beta.18",
-  "title": "Municipal-Revenue-and-Expenditures",
+  "title": "Municipal Revenue and Expenditures",
   "description": "Municipal Revenue and Expenditures reports indicators of Municipal revenue, taxes, and expenditures.",
   "version": "1.0",
   "licenses": [{
@@ -78,11 +78,11 @@
       }]
     }
     }],
-    "last_modified": "02/15/2017",
+    "last_modified": "07/17/2017",
     "ckan_extras": {
       "full_description": {
         "ckan_name": "Full Description",
-        "value": "Generally, indicators reported are related to a given municipality's General Fund, as reported to the Office of Policy and Management. Intergovernmental Revenue counts any revenue received from other governments, including state, federal, and other municipal governments. This income may be part of grants, shared taxes, advances, cooperative or joint financing funds, or repayment for services rendered by one government for another. Other Revenue includes items such as licensing and user fees, and is calculated here by subtracting Property Tax Revenue and Intergovernmental Revenue from the Total Revenue. Total Transfers into General Fund includes revenue items the town includes in the budgeting process. Items that are not included in the budget, such as debt proceeds or bond refunds, are not included in this indicator, but are included in the Total Revenue including Other Sources indicator. Non-Educational Expenditures are calculated by subtracting Educational Expenditures from the Total Expenditures. Net Revenue is the surplus (or deficit) left after subtracting a municipality's Total Expenditures from its Total Revenue. Current Year Adjusted Taxes collectible are used in the calculation of an Equalized Mill Rate. State Fiscal Years run from July 1 through the following June 30. Population estimates used to calculate Per Capita measures were derived using the Connecticut Department of Public Health estimates as of July 1 of the year ending the State Fiscal Year - ie. SFY 2012-2013 uses the population estimate for July 1, 2013. For SFY 2013-2014, the town of Plymouth did not report to the OPM, therefore all values for that town and year are suppressed.",
+        "value": "Generally, indicators reported are related to a given municipality's General Fund, as reported to the Office of Policy and Management. Intergovernmental Revenue counts any revenue received from other governments, including state, federal, and other municipal governments. This income may be part of grants, shared taxes, advances, cooperative or joint financing funds, or repayment for services rendered by one government for another. Other Revenue includes items such as licensing and user fees, and is calculated here by subtracting Property Tax Revenue and Intergovernmental Revenue from the Total Revenue. Total Transfers into General Fund includes revenue items the town includes in the budgeting process. Items that are not included in the budget, such as debt proceeds or bond refunds, are not included in this indicator, but are included in the Total Revenue including Other Sources indicator. Non-Educational Expenditures are calculated by subtracting Educational Expenditures from the Total Expenditures. Net Revenue is the surplus (or deficit) left after subtracting a municipality's Total Expenditures from its Total Revenue. Current Year Adjusted Taxes collectible are used in the calculation of an Equalized Mill Rate. State Fiscal Years run from July 1 through the following June 30. Population estimates used to calculate Per Capita measures were derived using the Connecticut Department of Public Health estimates as of July 1 of the year ending the State Fiscal Year - ie. SFY 2012-2013 uses the population estimate for July 1, 2013. For SFY 2014-2015, the town of Plymouth did not report to the OPM, therefore all values for that town and year are suppressed and calculations for percent of state averages account for the removal of the population of Plymouth.",
         "type": "string"
       },
       "suppression": {
@@ -102,7 +102,7 @@
       },
       "denominator": {
         "ckan_name": "Denominator",
-        "value": "For Current Year Adjusted Tax Levy per Capita, the denominator is the total Population for the selected municipality as of July 1 of the end year of the selected State Fiscal Year (eg July 1, 2013 for SFY 2012-2013). For Property Tax Revenue as Percent of Total Revenue and Ratio of Intergovernmental Revenue to Total Revenue, the denominator is the Total Revenue for the selected municipality and year. For the Ratio of Total Revenue to Total Expenditures and Other Sources, the denominator is the sum of Total Expenditures and Total Transfers from Other Sources for the selected municipality and year. For the Current Year Adjusted Tax Levy per Capita as Percent of State Average, the denominator is the quotient of a sum of Current Year Adjusted Taxes Collectible for all municipalities divided by a sum of their respective Total Populations for the selected fiscal year.",
+        "value": "For Current Year Adjusted Tax Levy per Capita, the denominator is the total Population for the selected municipality as of July 1 of the end year of the selected State Fiscal Year (eg July 1, 2013 for SFY 2012-2013). For Property Tax Revenue as Percent of Total Revenue and Ratio of Intergovernmental Revenue to Total Revenue, the denominator is the Total Revenue for the selected municipality and year. For the Ratio of Total Revenue to Total Expenditures and Other Sources, the denominator is the sum of Total Expenditures and Total Transfers from Other Sources for the selected municipality and year. For the Current Year Adjusted Tax Levy per Capita as Percent of State Average, the denominator is the quotient of a sum of Current Year Adjusted Taxes Collectible for all municipalities divided by a sum of their respective Total Populations (excluding Plymouth for SFY 2014-2015) for the selected fiscal year.",
         "type": "string"
       },
       "domain": {
@@ -265,29 +265,29 @@
       {
         "type": "$lookup",
         "filter": {
-          "Town": "Berlin",
-          "Year": "SFY 2012-2013",
+          "Town": "Greenwich",
+          "Year": "SFY 2014-2015",
           "Variable": "Current Year Adjusted Tax Levy per Capita as Percent of State Average",
           "Measure Type":"Percent"
         },
         "expected": {
           "type": "$match",
           "number type": "float",
-          "value": 109.5
+          "value": 192.8
         }
       },
       {
         "type": "$lookup",
         "filter": {
           "Town": "Bethany",
-          "Year": "SFY 2014-2015",
+          "Year": "SFY 2012-2013",
           "Variable": "Non-Educational Expenditures",
           "Measure Type":"Number"
         },
         "expected": {
           "type": "$match",
           "number type": "int",
-          "value": 6210255
+          "value": 5522645
         }
       }
   ],

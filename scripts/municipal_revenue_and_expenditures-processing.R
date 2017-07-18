@@ -1,13 +1,15 @@
 library(dplyr)
 library(devtools)
 library(datapkg)
+library(stringr)
 
 ##################################################################
 #
 # Processing Script for Municipal-Revenue-and-Expenditures
 # Created by Jenna Daly
 # On 02/15/2017
-#
+# Update 07/17/2017 Jenna Daly
+#  - Remove Plymouth pop from state totals in 2014
 ##################################################################
 
 sub_folders <- list.files()
@@ -83,7 +85,7 @@ for (i in 1:length(only_FISCIN)) {
 }
 
 # Town names to title case
-all_data$"Town" <- gsub("\\b([a-z])([a-z]+)", "\\U\\1\\E\\2", tolower(all_data$Town), perl=TRUE)
+all_data$Town <- str_to_title(all_data$Town)
 
 ## Round numeric columns to whole numbers
 round_df <- function(x, digits) {
@@ -136,6 +138,12 @@ all_data$"Ratio of Total Revenue to Total Expenditures" <-  round(100 * (all_dat
 
 sum_adjtaxcol <- aggregate(`Current Year Adjusted Taxes Collectible` ~ Year, all_data, sum)
 sum_pop <- aggregate(Population ~ Year, all_data, sum)
+
+plymouth2014pop <- all_data$Population[which(all_data$Year == "SFY 2014-2015" & all_data$Town == "Plymouth")]
+state2014pop <- sum_pop$Population[which(sum_pop$Year == "SFY 2014-2015")]
+
+#Remove Plymouth pop for 2014 (11813) from total state population for 2014
+sum_pop$Population[which(sum_pop$Year == "SFY 2014-2015")] <- (state2014pop - plymouth2014pop)
 
 joined_sums <- merge(all_data, sum_adjtaxcol, by="Year")
 joined_sums <- merge(joined_sums, sum_pop, by="Year")
