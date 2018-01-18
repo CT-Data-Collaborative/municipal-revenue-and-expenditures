@@ -1,12 +1,16 @@
 Municipal-Revenue-and-Expenditures
 
-[![Build Status](https://travis-ci.org/CT-Data-Collaborative/municipal-debt.svg?branch=master)](https://travis-ci.org/CT-Data-Collaborative/municipal-revenue-and-expenditures)
-
 Municipal Revenue and Expenditures reports indicators of Municipal revenue, taxes, and expenditures.
 
-Data Source: <https://data.ct.gov/Government/Municipal-Fiscal-Indicators-2011-2015-MS-Access-da/uij9-wzqw>
+Data Source: <https://data.ct.gov/Government/Municipal-Fiscal-Indicators-2012-2016-MS-Access-Da/x5e2-4aw5>
 
 Supplement PDF: <http://www.ct.gov/opm/cwp/view.asp?A=2984&Q=383170>
+
+## Instructions for downloading CSVs from MS Access Database
+
+1) Download zip file from data.ct.gov
+2) Export .mdb to working directory
+3) Run get_csvs.sh file in same directory as .mdb file (make sure to change name of file in script)
 
 ## License MIT
 

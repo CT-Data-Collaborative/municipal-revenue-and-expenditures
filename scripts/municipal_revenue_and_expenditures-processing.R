@@ -10,6 +10,8 @@ library(stringr)
 # On 02/15/2017
 # Update 07/17/2017 Jenna Daly
 #  - Remove Plymouth pop from state totals in 2014
+# Update 01/18/2018 Jenna Daly
+#  - Removed code that corrects for Plymouth in 14-15, no longer needed
 ##################################################################
 
 sub_folders <- list.files()
@@ -38,7 +40,7 @@ all_data <- setNames(data.frame(matrix(ncol = 13, nrow = 0)),
 
 #read in each raw file and get ready for master combine
 for (i in 1:length(only_FISCIN)) {
-  current_file <- read.csv(paste0(path, "/", only_FISCIN[i]), stringsAsFactors=F, header=T)
+  current_file <- read.csv(paste0(path, "/", only_FISCIN[62]), stringsAsFactors=F, header=T)
   remove_folder <- sub(".*/", "", only_FISCIN[i]) #filename
   get_year <- unique(as.numeric(unlist(gsub("[^0-9]", "", unlist(remove_folder)), "")))
   get_year <- get_year + 2000
@@ -143,7 +145,7 @@ plymouth2014pop <- all_data$Population[which(all_data$Year == "SFY 2014-2015" & 
 state2014pop <- sum_pop$Population[which(sum_pop$Year == "SFY 2014-2015")]
 
 #Remove Plymouth pop for 2014 (11813) from total state population for 2014
-sum_pop$Population[which(sum_pop$Year == "SFY 2014-2015")] <- (state2014pop - plymouth2014pop)
+#sum_pop$Population[which(sum_pop$Year == "SFY 2014-2015")] <- (state2014pop - plymouth2014pop) <- no longer needed (01/18/2018)
 
 joined_sums <- merge(all_data, sum_adjtaxcol, by="Year")
 joined_sums <- merge(joined_sums, sum_pop, by="Year")
@@ -260,11 +262,10 @@ merge_long_fips <- merge(combined_final_long, fips, all=T)
 #remove "Connecticut"
 municipal_revenue_and_expenditures_data <- merge_long_fips[!merge_long_fips$Town == "Connecticut",]
 
-#Reorder columns
-municipal_revenue_and_expenditures_data <- municipal_revenue_and_expenditures_data[c("Town", "FIPS", "Year", "Measure Type", "Variable", "Value")]
-
-#Sort data
-municipal_revenue_and_expenditures_data <- arrange(municipal_revenue_and_expenditures_data, Year, Variable, `Measure Type`, Town)
+#Reorder/sort columns
+municipal_revenue_and_expenditures_data <- municipal_revenue_and_expenditures_data %>% 
+  select(Town, FIPS, Year, `Measure Type`, Variable, Value) %>% 
+  arrange(Town, Year, `Measure Type`, Variable)
 
 # Write to File
 write.table(
