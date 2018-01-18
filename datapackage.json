@@ -181,7 +181,7 @@
 		  	"value": {
 		  		"Town": "Hartford",
 		  		"Year": ["SFY 2015-2016"],
-		  		"Variable": "Total Revenue"
+		  		"Variable": ["Total Revenue", "Total Expenditures"]
         },
 		  	"type": "object"
       }
