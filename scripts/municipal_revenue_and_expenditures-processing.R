@@ -39,17 +39,20 @@ all_data <- setNames(data.frame(matrix(ncol = 13, nrow = 0)),
                        "Population"))
 
 #read in each raw file and get ready for master combine
+
 for (i in 1:length(only_FISCIN)) {
-  current_file <- read.csv(paste0(path, "/", only_FISCIN[62]), stringsAsFactors=F, header=T)
+  current_file <- read.csv(paste0(path, "/", only_FISCIN[i]), stringsAsFactors=F, header=T)
   remove_folder <- sub(".*/", "", only_FISCIN[i]) #filename
   get_year <- unique(as.numeric(unlist(gsub("[^0-9]", "", unlist(remove_folder)), "")))
   get_year <- get_year + 2000
   SFY <- paste(get_year - 1, get_year, sep = "-")
   SFY2 <- paste("SFY", SFY)
   current_file$Year <- SFY2
+  print(current_file$Year)
   col_names <- colnames(current_file)
   
   pop_col <- grep("population", col_names, ignore.case=T, value=T)
+  
   
   final_columns <- current_file[, c("Municipality",
                                     "Year",
@@ -104,10 +107,13 @@ round_df <- function(x, digits) {
                         "Population")
   columns_to_round <- sapply(x, mode) == 'numeric'
   all_data[columns_to_round] <-  round(all_data[columns_to_round], digits)
-  all_data
 }
 
-all_data <- round_df(all_data, 0)
+#all_data$Year
+
+## !! For some unknown reason, applying this round_df function removes Year from the dataframe.
+## - So I commented it out. - Added by Ilya on May 20, 2019
+#all_data <- round_df(all_data, 0)
 
 #Create Calculated Columns (percents will be rounded to 1 decimal)
 all_data$"Non-Educational Expenditures" <- NA
@@ -270,8 +276,9 @@ municipal_revenue_and_expenditures_data <- municipal_revenue_and_expenditures_da
 # Write to File
 write.table(
   municipal_revenue_and_expenditures_data,
-  file.path(getwd(), "data", "municipal_revenue_and_expenditures_data.csv"),
+  file.path(getwd(), "data", "municipal_revenue_and_expenditures_data_2017.csv"),
   sep = ",",
   na = "",
   row.names = F
 )
+

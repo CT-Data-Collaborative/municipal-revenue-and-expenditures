@@ -2,7 +2,9 @@ Municipal-Revenue-and-Expenditures
 
 Municipal Revenue and Expenditures reports indicators of Municipal revenue, taxes, and expenditures.
 
-Data Source: <https://data.ct.gov/Government/Municipal-Fiscal-Indicators-2012-2016-MS-Access-Da/x5e2-4aw5>
+Data Source:
+<https://data.ct.gov/Government/Municipal-Fiscal-Indicators-2012-2016-MS-Access-Da/x5e2-4aw5> (2012-2016)
+<https://data.ct.gov/dataset/Municipal-Fiscal-Indicators-2013-2017/sxe5-hth8> (2013-2017)
 
 Supplement PDF: <http://www.ct.gov/opm/cwp/view.asp?A=2984&Q=383170>
 
