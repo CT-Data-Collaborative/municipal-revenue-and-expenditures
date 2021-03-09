@@ -276,7 +276,7 @@ municipal_revenue_and_expenditures_data <- municipal_revenue_and_expenditures_da
 # Write to File
 write.table(
   municipal_revenue_and_expenditures_data,
-  file.path(getwd(), "data", "municipal_revenue_and_expenditures_data_2017.csv"),
+  file.path(getwd(), "data", "municipal_revenue_and_expenditures_data_2018.csv"),
   sep = ",",
   na = "",
   row.names = F
